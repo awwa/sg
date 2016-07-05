@@ -1,3 +1,4 @@
 #!/usr/bin/env ruby
 
-require "sg"
+require 'sg'
+Sg::CLI.start(ARGV)

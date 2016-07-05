@@ -1,0 +1,34 @@
+# # Let prefix of method name set_ and get_
+# AccessorMethodName:
+#   Enabled: false
+#
+# Change limitation of method length
+MethodLength:
+  CountComments: true  # count full line comments?
+  Max: 20
+
+# # Change limitation of module length
+# ModuleLength:
+#   Max: 600
+#
+# # Change limitation of the number of params
+# ParameterLists:
+#   Max: 8
+#   CountKeywordArgs: false
+#
+# Change limitation of AbcSize
+AbcSize:
+  Max: 27
+
+# # Change numeric literals
+# NumericLiterals:
+#   MinDigits: 20
+#
+# # Disable force module and class style
+# ClassAndModuleChildren:
+#   Enabled: false
+#
+# # Change limitation of the class length
+# ClassLength:
+#   CountComments: false  # count full line comments?
+#   Max: 180

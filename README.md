@@ -1,28 +1,27 @@
-# Sg
+# sg
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sg`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+`sg` gem allows you to access SendGrid API v3 endpoints from command line interface.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'sg'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
+You can install the `sg` via gem command:
 
     $ gem install sg
 
 ## Usage
 
-TODO: Write usage instructions here
+### Setup
+
+`sg` loads your SendGrid API Key from `SENDGRID_API_KEY` environment variable if you do not specify. So set your API Key to your environment variable.
+
+    $ env | grep SENDGRID_API_KEY
+    SENDGRID_API_KEY=SG...
+
+### Basic Usage
+
+See help.
+
+    $ bundle exec sg client help
 
 ## Development
 
@@ -38,4 +37,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
