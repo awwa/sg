@@ -27,13 +27,16 @@ module Sg
       3. With query string
       \x5Use -q option for the query string with the JSON string value.
       \x5GET https://api.sendgrid.com/v3/suppression/bounces?start_time=14324566&end_time=14324566
-      \x5> $ bundle exec sg client suppression bounces get -q='{"start_time": 14324566, "end_time": 14324566}'
+      \x5> $ bundle exec sg client suppression unsubscribes get -q='{"start_time":1367794504,"end_time":1467794504}'
 
       4. With request body
       \x5Use -b option for the request body with the JSON string value.
       \x5POST https://api.sendgrid.com/v3/api_keys
       \x5{"name": "My API Key", "scopes": ["mail.send"]}
       \x5> $ bundle exec sg client api_keys post -b='{"name": "My API Key", "scopes": ["mail.send"]}'
+
+      5. Send mail
+      \x5> $ sg client mail send post -b='{"personalizations":[{"to":[{"email":"to@example.com"}],"subject":"Hello, World!"}],"from":{"email":"from@example.com"},"content":[{"type":"text","value":"Hello, World!"}]}'
     DESC
     option(
       :apikey,
