@@ -51,13 +51,22 @@ module Sg
       api_key ||= ENV['SENDGRID_API_KEY']
       sg = SendGrid::API.new(api_key: api_key)
       idx = 0
+      params = CLI.parameterise(options)
       response = args.inject(sg.client) do |c, arg|
         idx += 1
-        (args.length == idx + 1) ? c.send(arg, options) : c.send(arg)
+        (args.length == idx) ? c.send(arg, params) : c.send(arg)
       end
       puts response.status_code if options[:response_status]
       puts response.headers if options[:response_header]
       puts response.body
+    end
+
+    def self.parameterise(options)
+      options.each_with_object({}) do |(k, v), memo|
+        if k.to_s == 'request_body' || k.to_s == 'query_params'
+          memo[k.to_s.to_sym] = JSON.parse(v) unless v.nil?
+        end
+      end
     end
   end
 end
