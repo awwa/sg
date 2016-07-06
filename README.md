@@ -23,6 +23,41 @@ See help.
 
     $ bundle exec sg client help
 
+### Example
+
+1.
+
+    GET https://api.sendgrid.com/v3/api_keys HTTP/1.1
+
+should be:
+
+    $ bundle exec sg client api_keys get
+
+2.
+
+    GET https://api.sendgrid.com/v3/api_keys/YOUR_API_KEY_ID HTTP/1.1
+
+should be:
+
+    $ bundle exec sg client api_keys YOUR_API_KEY_ID get
+
+3.
+
+    GET https://api.sendgrid.com/v3/suppression/bounces?start_time=14324566&end_time=14324566 HTTP/1.1
+
+should be:
+
+    $ bundle exec sg client suppression bounces get -q='{"start_time": 14324566, "end_time": 14324566}'
+
+4.
+
+    POST https://api.sendgrid.com/v3/api_keys HTTP/1.1
+    {"name": "My API Key", "scopes": ["mail.send"]}
+
+should be:
+
+    $ bundle exec sg client api_keys post -b='{"name": "My API Key", "scopes": ["mail.send"]}'
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. Run `bundle exec sg` to use the gem in this directory, ignoring other installed copies of this gem.

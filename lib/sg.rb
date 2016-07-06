@@ -7,7 +7,34 @@ module Sg
   # SendGrid Command Line Interface Class
   #
   class CLI < Thor
-    desc 'client', 'Call SendGrid Web API v3 from command line interface'
+    desc(
+      'client *PATH_TO_THE_ENDPOINT VERB',
+      'Call SendGrid Web API v3 from command line interface'
+    )
+    long_desc <<-DESC
+      1. Simple GET call
+      \x5Use the client command with path after v3 level with space.
+      Then add the HTTP verb at the end of the command.
+      \x5GET https://api.sendgrid.com/v3/api_keys
+      \x5> $ bundle exec sg client api_keys get
+
+      2. With variable
+      \x5Use the client command with the variable values.
+      Then add the HTTP verb at the end of the command.
+      \x5GET https://api.sendgrid.com/v3/api_keys/YOUR_API_KEY_ID
+      \x5> $ bundle exec sg client api_keys YOUR_API_KEY_ID get
+
+      3. With query string
+      \x5Use -q option for the query string with the JSON string value.
+      \x5GET https://api.sendgrid.com/v3/suppression/bounces?start_time=14324566&end_time=14324566
+      \x5> $ bundle exec sg client suppression bounces get -q='{"start_time": 14324566, "end_time": 14324566}'
+
+      4. With request body
+      \x5Use -b option for the request body with the JSON string value.
+      \x5POST https://api.sendgrid.com/v3/api_keys
+      \x5{"name": "My API Key", "scopes": ["mail.send"]}
+      \x5> $ bundle exec sg client api_keys post -b='{"name": "My API Key", "scopes": ["mail.send"]}'
+    DESC
     option(
       :apikey,
       aliases: '-k',
