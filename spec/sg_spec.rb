@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Sg
   describe CLI do
-    it 'has a version number' do
+    it 'has a version number ' do
       expect(Sg::VERSION).not_to be nil
     end
 
