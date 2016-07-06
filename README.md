@@ -1,6 +1,7 @@
 # sg
 
 [![Build Status](https://travis-ci.org/awwa/sg.svg?branch=master)](https://travis-ci.org/awwa/sg)
+[![Gem Version](https://badge.fury.io/rb/sg.svg)](https://badge.fury.io/rb/sg)
 
 `sg` gem allows you to access SendGrid API v3 endpoints from command line interface.
 
