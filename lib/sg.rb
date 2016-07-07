@@ -42,15 +42,30 @@ module Sg
     option(
       :apikey,
       aliases: '-k',
-      desc: 'API Key. Use env variable "SENDGRID_API_KEY" if not specified.'
+      desc: 'API Key. Load env variable "SENDGRID_API_KEY" if not specified.'
     )
-    option :request_body, aliases: '-b', desc: 'Request Body'
-    option :query_params, aliases: '-q', desc: 'Query String of the request'
-    option :response_header, aliases: '-h', desc: 'Output response header'
-    option :response_status, aliases: '-s', desc: 'Output reponse status code'
-    option :version, aliases: '-v', desc: 'Output gem version'
     option :user, aliases: '-u', desc: 'Username for Basic Auth.'
     option :pass, aliases: '-p', desc: 'Password for Basic Auth.'
+    option :request_body, aliases: '-b', desc: 'Request Body'
+    option(
+      :query_params,
+      aliases: '-q',
+      desc: 'Query String of the request',
+      banner: 'JSON_STRING'
+    )
+    option(
+      :response_header,
+      aliases: '-h',
+      desc: 'Output response header',
+      banner: ''
+    )
+    option(
+      :response_status,
+      aliases: '-s',
+      desc: 'Output reponse status code',
+      banner: ''
+    )
+    option :version, aliases: '-v', desc: 'Output gem version', banner: ''
     def client(*args)
       return puts Sg::VERSION if options[:version]
       idx = 0
