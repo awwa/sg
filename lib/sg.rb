@@ -1,3 +1,4 @@
+require 'base64'
 require 'thor'
 require 'sendgrid-ruby'
 require 'sg/version'
@@ -48,14 +49,13 @@ module Sg
     option :response_header, aliases: '-h', desc: 'Output response header'
     option :response_status, aliases: '-s', desc: 'Output reponse status code'
     option :version, aliases: '-v', desc: 'Output gem version'
+    option :user, aliases: '-u', desc: 'Username for Basic Auth.'
+    option :pass, aliases: '-p', desc: 'Password for Basic Auth.'
     def client(*args)
       return puts Sg::VERSION if options[:version]
-      api_key = options[:apikey]
-      api_key ||= ENV['SENDGRID_API_KEY']
-      sg = SendGrid::API.new(api_key: api_key)
       idx = 0
       params = CLI.parameterise(options)
-      response = args.inject(sg.client) do |c, arg|
+      response = args.inject(CLI.get_client(options)) do |c, arg|
         idx += 1
         (args.length == idx) ? c.send(arg, params) : c.send('_', arg)
       end
@@ -69,6 +69,19 @@ module Sg
         if k.to_s == 'request_body' || k.to_s == 'query_params'
           memo[k.to_s.to_sym] = JSON.parse(v) unless v.nil?
         end
+      end
+    end
+
+    def self.get_client(options)
+      if options[:user] && options[:pass]
+        up = "#{options[:user]}:#{options[:pass]}"
+        headers = {}
+        headers['Authorization'] = "Basic #{Base64.urlsafe_encode64(up)}"
+        SendGrid::API.new(api_key: '', request_headers: headers).client
+      else
+        api_key = options[:apikey]
+        api_key ||= ENV['SENDGRID_API_KEY']
+        SendGrid::API.new(api_key: api_key).client
       end
     end
   end

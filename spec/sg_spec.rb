@@ -44,5 +44,13 @@ module Sg
       content = capture { CLI.start(args) }
       expect(content).to match(//)
     end
+
+    it 'GET https://api.sendgrid.com/v3/scopes' do
+      args = [
+        'client', 'scopes', 'get', '--user', 'hoge', '--pass', 'fuga'
+      ]
+      content = capture { CLI.start(args) }
+      expect(content).to match(/authorization required/)
+    end
   end
 end
