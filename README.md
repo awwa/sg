@@ -24,7 +24,7 @@ You can install the `sg` via gem command:
 
 See help.
 
-    $ bundle exec sg client help
+    $ sg client help
 
 ### Example
 
@@ -34,7 +34,7 @@ See help.
 
 should be:
 
-    $ bundle exec sg client api_keys get
+    $ sg client api_keys get
 
 2.
 
@@ -42,7 +42,7 @@ should be:
 
 should be:
 
-    $ bundle exec sg client api_keys YOUR_API_KEY_ID get
+    $ sg client api_keys YOUR_API_KEY_ID get
 
 3.
 
@@ -50,7 +50,7 @@ should be:
 
 should be:
 
-    $ bundle exec sg client suppression bounces get -q='{"start_time": 14324566, "end_time": 14324566}'
+    $ sg client suppression bounces get -q='{"start_time": 14324566, "end_time": 14324566}'
 
 4.
 
@@ -59,7 +59,7 @@ should be:
 
 should be:
 
-    $ bundle exec sg client api_keys post -b='{"name": "My API Key", "scopes": ["mail.send"]}'
+    $ sg client api_keys post -b='{"name": "My API Key", "scopes": ["mail.send"]}'
 
 ## Development
 
