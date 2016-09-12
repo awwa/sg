@@ -72,7 +72,7 @@ module Sg
       params = CLI.parameterise(options)
       response = args.inject(CLI.get_client(options)) do |c, arg|
         idx += 1
-        (args.length == idx) ? c.send(arg, params) : c.send('_', arg)
+        args.length == idx ? c.send(arg, params) : c.send('_', arg)
       end
       puts response.status_code if options[:response_status]
       puts response.headers if options[:response_header]
