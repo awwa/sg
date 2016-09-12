@@ -1,3 +1,7 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+
 # Change limitation of method length
 MethodLength:
   CountComments: true  # count full line comments?
