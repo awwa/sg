@@ -24,7 +24,7 @@ You can install the `sg` via gem command:
 
 See help.
 
-    $ sg client help
+    $ sg help client
 
 ### Example
 
